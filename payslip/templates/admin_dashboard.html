@@ -1,0 +1,30 @@
+<!-- payslip_app/templates/payslip_app/admin_dashboard.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Filename</th>
+                <th>Upload Time</th>
+                <th>Download</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for payslip in payslips %}
+            <tr>
+                <td>{{ payslip.file.name }}</td>
+                <td>{{ payslip.upload_time }}</td>
+                <td><a href="{{ payslip.file.url }}" download>Download</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

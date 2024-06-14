@@ -1,0 +1,17 @@
+<!-- payslip_app/templates/payslip_app/upload.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Payslip</title>
+</head>
+<body>
+    <h1>Upload Your Payslip</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>
