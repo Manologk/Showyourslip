@@ -102,7 +102,7 @@ WSGI_APPLICATION = 'payslipshow.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'defaultdb',
         'USER': 'avnadmin',
         'PASSWORD': 'AVNS_lRWpwiFVSMJmsdbVQWT',
