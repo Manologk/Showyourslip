@@ -108,9 +108,10 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'defaultdb',
         'USER': 'avnadmin',
-        'PASSWORD': 'AVNS__IX8NB1vG06viybrJt7',
-        'HOST': 'payslipdb-payslipdb.j.aivencloud.com',
-        'PORT': '26827'
+        'PASSWORD': 'AVNS_ZZiOMhvRqZT77TcwKmq',
+        'HOST': 'payslipdb-payslipappcontainer.j.aivencloud.com',
+        'PORT': '26777',
+        'OPTIONS': {'sslmode': 'require'}
     }
 }
 
