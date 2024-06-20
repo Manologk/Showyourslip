@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-09ad7-@!(jf-yz7r92q(f27rw2l&ww9t1q+58k1+v#t0j^@gpc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = [
+    '.vercel.app',
+    '127.0.0.1',
+]
 
 # Application definition
 
@@ -100,12 +103,13 @@ WSGI_APPLICATION = 'payslipshow.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        #'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'defaultdb',
         'USER': 'avnadmin',
-        'PASSWORD': 'AVNS_lRWpwiFVSMJmsdbVQWT',
-        'HOST': 'payslipshare-payslipo.j.aivencloud.com',
-        'PORT': '19182'
+        'PASSWORD': 'AVNS__IX8NB1vG06viybrJt7',
+        'HOST': 'payslipdb-payslipdb.j.aivencloud.com',
+        'PORT': '26827'
     }
 }
 
