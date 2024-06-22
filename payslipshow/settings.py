@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+from datetime import timedelta
 from pathlib import Path
 import os
 
@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt',
+
+    'whitenoise.runserver_nostatic',
 ]
 
 REST_FRAMEWORK = {
@@ -53,7 +55,7 @@ REST_FRAMEWORK = {
 }
 
 # Optional: Set JWT settings
-from datetime import timedelta
+
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
@@ -64,6 +66,8 @@ SIMPLE_JWT = {
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -104,14 +108,24 @@ WSGI_APPLICATION = 'payslipshow.wsgi.application'
 
 DATABASES = {
     'default': {
-        #'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # #'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'defaultdb',
-        'USER': 'avnadmin',
-        'PASSWORD': 'AVNS_ZZiOMhvRqZT77TcwKmq',
-        'HOST': 'payslipdb-payslipappcontainer.j.aivencloud.com',
-        'PORT': '26777',
-        'OPTIONS': {'sslmode': 'require'}
+        'NAME': 'payslipdb',
+        'USER': 'payslipdb_owner',
+        'PASSWORD': '7ESD5qmwiCPf',
+        'HOST': 'ep-flat-wildflower-a5xz4xhu.us-east-2.aws.neon.tech',
+        'PORT': '5432',
+        'OPTIONS': {
+            'sslmode': 'require',
+        }
+
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'defaultdb',
+        # 'USER': 'avnadmin',
+        # 'PASSWORD': 'AVNS_j33qcXHzpycOhRT6cLk',
+        # 'HOST': 'payslipdb-payslipappcontainer.j.aivencloud.com',
+        # 'PORT': '26777',
+        # 'OPTIONS': {'sslmode': 'require'}
     }
 }
 
@@ -151,9 +165,11 @@ STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, "static")
-# ]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static")
+]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
